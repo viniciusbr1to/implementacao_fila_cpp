@@ -50,6 +50,36 @@ int peek(){
 return queue[front];
 }
 
+int size(){
+return count;
+}
+
+int search(int value){
+for(int i = front; i <= rear; i++){
+    if(value == queue[i]){
+       return i + 1;
+    }
+}
+
+return -1;
+}
+
+int queue_clear(){
+if(is_empty()){
+   return 1;
+}
+
+front = 0;
+rear = -1;
+count = 0;
+return 0;
+}
+
+void reverse(){
+
+
+}
+
 int print(){
 if(is_empty()){
    return 1;
@@ -68,11 +98,11 @@ void menu(){
 cout << "-----------------------------------------------------------------\n";
 cout << "|1. Enqueue             |5. Search           |9. Leave          |\n";
 cout << "-----------------------------------------------------------------\n";
-cout << "|2. Dequeue             |6. Clear            |\n";
+cout << "|2. Dequeue             |6. Clear         |\n";
 cout << "-------------------------------------------\n";
-cout << "|3. Peek                |7. Reverse          |\n";
+cout << "|3. Peek                |7. Reverse       |\n";
 cout << "-------------------------------------------\n";
-cout << "|4. Size                |8. Print            |\n";
+cout << "|4. Size                |8. Print         |\n";
 cout << "-------------------------------------------\n";
 }
 void clear(){
@@ -124,14 +154,30 @@ if(q.is_empty() == 1){
 break;
 
 case 4:
+if(q.is_empty()){
+   cout << "The queue is empty.\n";
+} else
+   cout << "The queue size is: " << q.size() << endl;
 
 break;
 
 case 5:
+cout << "Enter the desired value: ";
+cin >> value;
+clear();
+
+if(q.search(value) == -1){
+   cout << "The value was not found.\n";
+} else
+   cout << "The value was founded at position " << q.search(value) << endl;
 
 break;
 
 case 6:
+if(q.queue_clear() == 1){
+   cout << "The queue is already empty.\n";
+} else 
+   cout << "The queue was cleaned successfully.\n";
 
 break;
 
