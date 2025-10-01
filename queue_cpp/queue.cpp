@@ -75,9 +75,29 @@ count = 0;
 return 0;
 }
 
-void reverse(){
+int reverse(){
+if(is_empty()){
+   return 1;
+}
+   int temp[queue_size];
+   int temp_count = count;
+    
+   
+for(int i = 0; i < temp_count; i++){
+    temp[i] = queue[(front + i) % queue_size];
+}
+    
+   
+front = 0;
+rear = -1;
+count = 0;
+    
 
+for(int i = temp_count - 1; i >= 0; i--){
+    enqueue(temp[i]);
+}
 
+return 0;
 }
 
 int print(){
@@ -182,7 +202,10 @@ if(q.queue_clear() == 1){
 break;
 
 case 7:
-
+if(q.reverse() == 1){
+   cout << "The queue is empty.\n";
+} else
+   cout << "The queue was successfully reversed.\n";
 break;
 
 case 8:
